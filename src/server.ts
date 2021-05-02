@@ -16,7 +16,10 @@ const server = new ApolloServer({
     return {
       tmdbAPI: new TMDBAPI()
     };
-  }
+  },
+  // enable playground in prod
+  introspection: true,
+  playground: true,
 });
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
