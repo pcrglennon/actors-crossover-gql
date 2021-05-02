@@ -24,11 +24,6 @@ export const typeDef = gql`
     characterName: String!
   }
 
-  type Movie {
-    id: Int!
-    title: String!
-  }
-
   type CrossoverMovie {
     id: Int!
     title: String!

@@ -41,12 +41,6 @@ export type CrossoverMovie = {
   crossoverCredits: Array<MovieCastCredit>;
 };
 
-export type Movie = {
-  __typename?: 'Movie';
-  id: Scalars['Int'];
-  title: Scalars['String'];
-};
-
 export type MovieCastCredit = {
   __typename?: 'MovieCastCredit';
   actorId: Scalars['Int'];
@@ -157,7 +151,6 @@ export type ResolversTypes = ResolversObject<{
   ActorSearchResult: ResolverTypeWrapper<ActorSearchResult>;
   String: ResolverTypeWrapper<Scalars['String']>;
   CrossoverMovie: ResolverTypeWrapper<CrossoverMovie>;
-  Movie: ResolverTypeWrapper<Movie>;
   MovieCastCredit: ResolverTypeWrapper<MovieCastCredit>;
   Query: ResolverTypeWrapper<{}>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
@@ -171,7 +164,6 @@ export type ResolversParentTypes = ResolversObject<{
   ActorSearchResult: ActorSearchResult;
   String: Scalars['String'];
   CrossoverMovie: CrossoverMovie;
-  Movie: Movie;
   MovieCastCredit: MovieCastCredit;
   Query: {};
   Boolean: Scalars['Boolean'];
@@ -205,12 +197,6 @@ export type CrossoverMovieResolvers<ContextType = any, ParentType extends Resolv
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type MovieResolvers<ContextType = any, ParentType extends ResolversParentTypes['Movie'] = ResolversParentTypes['Movie']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
 export type MovieCastCreditResolvers<ContextType = any, ParentType extends ResolversParentTypes['MovieCastCredit'] = ResolversParentTypes['MovieCastCredit']> = ResolversObject<{
   actorId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   movieId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -229,7 +215,6 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   ActorSearchResponseMeta?: ActorSearchResponseMetaResolvers<ContextType>;
   ActorSearchResult?: ActorSearchResultResolvers<ContextType>;
   CrossoverMovie?: CrossoverMovieResolvers<ContextType>;
-  Movie?: MovieResolvers<ContextType>;
   MovieCastCredit?: MovieCastCreditResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;
