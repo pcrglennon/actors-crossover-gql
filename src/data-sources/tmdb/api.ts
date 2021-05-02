@@ -4,10 +4,13 @@ import 'dotenv/config';
 import {
   ActorSearchResult,
   ActorSearchResponse,
-  Movie,
+  CrossoverMovie,
   MovieCastCredit
 } from '../../generated/graphql';
 import * as TMDB from './typings';
+
+// TODO - look into using "Models" from graphql-codegen
+type Movie = Pick<CrossoverMovie, 'id' | 'title' | 'profilePath'>;
 
 export class TMDBAPI extends RESTDataSource {
   constructor() {

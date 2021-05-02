@@ -40,7 +40,6 @@ export const resolvers: ActorsResolvers = {
 
         return {
           ...movie,
-          __typename: 'CrossoverMovie',
           crossoverCredits: castCredits
         };
       });
