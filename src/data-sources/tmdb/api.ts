@@ -10,7 +10,7 @@ import {
 import * as TMDB from './typings';
 
 // TODO - look into using "Models" from graphql-codegen
-type Movie = Pick<CrossoverMovie, 'id' | 'title' | 'profilePath'>;
+type Movie = Pick<CrossoverMovie, 'id' | 'title' | 'releaseDate' | 'posterPath'>;
 
 export class TMDBAPI extends RESTDataSource {
   constructor() {
@@ -88,7 +88,9 @@ export class TMDBAPI extends RESTDataSource {
   private normalizeMovie(movie: TMDB.Movie): Movie {
     return {
       id: movie.id,
-      title: movie.title
+      title: movie.title,
+      releaseDate: movie.release_date,
+      posterPath: movie.poster_path
     };
   }
 }

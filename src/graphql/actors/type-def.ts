@@ -18,21 +18,7 @@ export const typeDef = gql`
     meta: ActorSearchResponseMeta!
   }
 
-  type MovieCastCredit {
-    actorId: Int!
-    movieId: Int!
-    characterName: String!
-  }
-
-  type CrossoverMovie {
-    id: Int!
-    title: String!
-    profilePath: String
-    crossoverCredits: [MovieCastCredit!]!
-  }
-
   extend type Query {
     actorSearch(queryString: String!, page: Int!): ActorSearchResponse!
-    crossoverMovies(actorIds: [Int!]!): [CrossoverMovie!]!
   }
 `;

@@ -37,7 +37,8 @@ export type CrossoverMovie = {
   __typename?: 'CrossoverMovie';
   id: Scalars['Int'];
   title: Scalars['String'];
-  profilePath?: Maybe<Scalars['String']>;
+  releaseDate: Scalars['String'];
+  posterPath?: Maybe<Scalars['String']>;
   crossoverCredits: Array<MovieCastCredit>;
 };
 
@@ -192,7 +193,8 @@ export type ActorSearchResultResolvers<ContextType = any, ParentType extends Res
 export type CrossoverMovieResolvers<ContextType = any, ParentType extends ResolversParentTypes['CrossoverMovie'] = ResolversParentTypes['CrossoverMovie']> = ResolversObject<{
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  profilePath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  releaseDate?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  posterPath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   crossoverCredits?: Resolver<Array<ResolversTypes['MovieCastCredit']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;

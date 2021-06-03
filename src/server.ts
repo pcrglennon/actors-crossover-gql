@@ -3,14 +3,17 @@ import { ApolloServer } from 'apollo-server';
 import { TMDBAPI } from './data-sources/tmdb';
 import { baseTypeDef } from './graphql';
 import { actorsResolvers, actorsTypeDef } from './graphql/actors';
+import { crossoverMoviesResolvers, crossoverMoviesTypeDef } from './graphql/crossover-movies';
 
 const server = new ApolloServer({
   typeDefs: [
     baseTypeDef,
-    actorsTypeDef
+    actorsTypeDef,
+    crossoverMoviesTypeDef
   ],
   resolvers: [
-    actorsResolvers
+    actorsResolvers,
+    crossoverMoviesResolvers
   ],
   dataSources: () => {
     return {
