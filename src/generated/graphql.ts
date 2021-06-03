@@ -44,8 +44,10 @@ export type CrossoverMovie = {
 
 export type MovieCastCredit = {
   __typename?: 'MovieCastCredit';
-  actorId: Scalars['Int'];
+  id: Scalars['String'];
   movieId: Scalars['Int'];
+  actorId: Scalars['Int'];
+  actorName: Scalars['String'];
   characterName: Scalars['String'];
 };
 
@@ -200,8 +202,10 @@ export type CrossoverMovieResolvers<ContextType = any, ParentType extends Resolv
 }>;
 
 export type MovieCastCreditResolvers<ContextType = any, ParentType extends ResolversParentTypes['MovieCastCredit'] = ResolversParentTypes['MovieCastCredit']> = ResolversObject<{
-  actorId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   movieId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  actorId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  actorName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   characterName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;

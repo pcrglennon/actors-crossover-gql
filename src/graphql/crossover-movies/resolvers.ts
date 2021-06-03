@@ -10,8 +10,12 @@ type CrossoverMoviesResolvers = {
 export const resolvers: CrossoverMoviesResolvers = {
   Query: {
     crossoverMovies:  async (_root, { actorIds }, { dataSources: { tmdbAPI } }) => {
-      const groupedMovieCastCredits = await Promise.all(actorIds.map(actorId => {
-        return tmdbAPI.getMovieCastCredits(actorId);
+      const actors = await Promise.all(actorIds.map(actorId => {
+        return tmdbAPI.getActor(actorId);
+      }));
+
+      const groupedMovieCastCredits = await Promise.all(actors.map(actor => {
+        return tmdbAPI.getMovieCastCredits(actor);
       }));
 
       const groupedMovieIds = groupedMovieCastCredits.map(castCredits => {

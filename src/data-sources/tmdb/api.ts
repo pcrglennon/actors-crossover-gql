@@ -33,16 +33,16 @@ export class TMDBAPI extends RESTDataSource {
     return this.normalizeActorSearchResponse(response);
   }
 
-  async getMovieCastCredits(actorId: number): Promise<MovieCastCredit[]> {
+  async getMovieCastCredits(actor: TMDB.Person): Promise<MovieCastCredit[]> {
     const response = await this.get<TMDB.MovieCreditsResponse>(
-      `person/${actorId}/movie_credits`,
+      `person/${actor.id}/movie_credits`,
       {
         api_key: process.env.TMDB_API_KEY
       }
     );
 
     return response.cast.map(castCredit => {
-      return this.normalizeMovieCredit(castCredit, actorId);
+      return this.normalizeMovieCredit(castCredit, actor);
     });
   }
 
@@ -55,6 +55,17 @@ export class TMDBAPI extends RESTDataSource {
     );
 
     return this.normalizeMovie(response);
+  }
+
+  async getActor(actorId: number): Promise<TMDB.Person> {
+    const response = await this.get<TMDB.Person>(
+      `person/${actorId}`,
+      {
+        api_key: process.env.TMDB_API_KEY
+      }
+    );
+
+    return response;
   }
 
   private normalizeActorSearchResponse(response: TMDB.PersonSearchResponse): ActorSearchResponse {
@@ -77,9 +88,11 @@ export class TMDBAPI extends RESTDataSource {
     };
   }
 
-  private normalizeMovieCredit(castCredit: TMDB.CastCredit, actorId: number): MovieCastCredit {
+  private normalizeMovieCredit(castCredit: TMDB.CastCredit, actor: TMDB.Person): MovieCastCredit {
     return {
-      actorId,
+      id: castCredit.credit_id,
+      actorId: actor.id,
+      actorName: actor.name,
       movieId: castCredit.id,
       characterName: castCredit.character
     };

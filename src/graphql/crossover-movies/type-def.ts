@@ -2,8 +2,10 @@ import { gql } from 'apollo-server';
 
 export const typeDef = gql`
   type MovieCastCredit {
-    actorId: Int!
+    id: String!
     movieId: Int!
+    actorId: Int!
+    actorName: String!
     characterName: String!
   }
 

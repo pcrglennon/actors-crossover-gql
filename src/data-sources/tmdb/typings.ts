@@ -21,8 +21,9 @@ export type PersonSearchResponse = {
 };
 
 export type CastCredit = {
+  credit_id: string,
   character: string,
-  id: number
+  id: number // NB - represents Movie ID
 };
 
 export type MovieCreditsResponse = {
